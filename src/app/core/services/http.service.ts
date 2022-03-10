@@ -47,12 +47,14 @@ export class HttpService {
 
   public doGet<T>(serviceUrl: string, opts?: Options): Observable<T> {
     const ropts = this.createOptions(opts);
+    console.log(serviceUrl);
     return this.http.get<T>(serviceUrl, ropts);
   }
 
   public doPost<T, R>(serviceUrl: string, body: T, opts?: Options): Observable<R> {
     const ropts = this.createOptions(opts);
-
+    console.log(serviceUrl);
+    console.log(body);
     return this.http.post<R>(serviceUrl, body, ropts);
   }
 
