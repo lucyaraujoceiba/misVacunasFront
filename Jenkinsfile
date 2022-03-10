@@ -66,8 +66,8 @@ pipeline {
 
     stage('Static Code Analysis') {
       steps{
-        sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:javier.certificaciones.front-lucy.araujo',
-        sonarName:'CeibaADN-Ceiba-MisVacunas-lucy.araujo',
+        sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:lucy.misvacunas.front.lucy.araujo',
+        sonarName:'''"CeibaADN-MisVacunasFront(lucy.araujo)"''',
         sonarPathProperties:'./sonar-project.properties')
       }
     }
