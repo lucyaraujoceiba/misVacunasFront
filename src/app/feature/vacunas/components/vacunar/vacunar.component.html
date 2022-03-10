@@ -39,7 +39,7 @@
     <div class="row">
       <div class="col-sm-2"></div>
       <div class="col-sm-2">
-        <button (click)="buscar()"  class="btn btn-primary" [disabled]="!usuarioForm.valid">Buscar</button>
+        <button (click)="buscar()" id="btnBuscarVacunasId" class="btn btn-primary" [disabled]="!usuarioForm.valid">Buscar</button>
         <br>
       </div>
         <br>
@@ -47,7 +47,8 @@
     <div class="row">
       <div class="col-sm-2"></div>
       <div class="col-sm-2" >
-        <label class="link-primary" (click)="registrarUsuarioshow(templateRegistrarUsuario)">Registrar usuario</label>
+        <label class="link-primary" id="btnRegistrarusuario"
+        (click)="registrarUsuarioshow(templateRegistrarUsuario)">Registrar usuario</label>
       </div>
     </div>
   </form>
@@ -65,7 +66,7 @@
   </div>
   
   <br>
-  <div *ngIf="!mostrarLista"> El usuario no tiene vacunas registradas </div>
+  <div ><label>{{resultadoBusqueda}}</label> </div>
   <div class="row" *ngIf="mostrarLista" >
       <label>{{mensaje}}</label>
       
@@ -107,7 +108,7 @@
           <label>Nombre Vacuna:</label>
         </div>
         <div class="col-sm-4 col-md-8">
-          <input validar type="text" id="aplicadas" name="aplicadas" 
+          <input validar type="text" id="nombreVacuna" name="aplicadas" 
             class="form-control" formControlName="nombre">
         </div>
       </div>
@@ -116,7 +117,7 @@
           <label>Estado:</label>
         </div>
         <div class="col-sm-8">
-            <select  id="estado" name="estado" 
+            <select  id="estadoVacuna" name="estado" 
             formControlName="estado" class="form-select form-control" >
               <option value="aplicada" selected>Aplicada</option>
               <option value="pendiente">Pendiente</option>
@@ -129,7 +130,7 @@
           <label>Dosis:</label>
         </div>
         <div class="col-sm-8">
-          <input validar type="number" id="dosis" name="dosis" placeholder="Número de dosis"
+          <input validar type="number" id="dosisVacuna" name="dosis" placeholder="Número de dosis"
             class="form-control" formControlName="dosis">
         </div>
       </div>
@@ -139,7 +140,7 @@
             <label>valor:</label>
           </div>
           <div class="col-sm-8">
-            <input validar type="number" id="valor" name="valor" 
+            <input validar type="number" id="valorVacuna" name="valor" 
               class="form-control" formControlName="valor">
           </div>
       </div>
@@ -150,7 +151,7 @@
           </div>
           <div class="col-sm-8">
             <div>
-              <input type="checkbox" id="subsidiada" name="subsidiada"
+              <input type="checkbox" id="subsidiadaVacuna" name="subsidiada"
               formControlName="subsidiada" checked>
             </div>
           </div>
@@ -161,7 +162,7 @@
           </div>
           <div class="col-sm-8">
             <div>
-              <input type="checkbox" id="dosisPendientes" name="dosisPendientes"
+              <input type="checkbox" id="dosisPendientesVacuna" name="dosisPendientes"
               formControlName="dosisPendiente" checked>
             </div>
           </div>
@@ -172,7 +173,7 @@
             <label>Proxima dosis en: (meses):</label>
           </div>
           <div class="col-sm-8">
-            <input validar type="number" id="tiempoDosis" name="tiempoDosis" 
+            <input validar type="number" id="tiempoDosisVacuna" name="tiempoDosis" 
               class="form-control" formControlName="tiempoEntreDosis">
           </div>
       </div>
@@ -180,7 +181,7 @@
   
       <div class="row">
         <div class="col-sm-8">
-            <button class="btn btn-primary" [disabled]="!vacunaForm.valid">Guardar</button>
+            <button class="btn btn-primary" id="btnGuardarVacuna" [disabled]="!vacunaForm.valid">Guardar</button>
         </div>
       </div>
     </form>
@@ -301,7 +302,7 @@
           <label>Tipo documento:</label>
         </div>
         <div class="col-sm-8">
-          <select  id="tipoDocUsuario" name="tipoDocUsuario" 
+          <select  id="tipoDocUsuarioregistro" name="tipoDocUsuario" 
           formControlName="tipoIdentificacion" class="form-select form-control" >
             <option value="CC" selected>Cedula ciudadania</option>
             <option value="CE">Cedula extranjera</option>
@@ -317,7 +318,7 @@
           <label>Docuemnto:</label>
         </div>
         <div class="col-sm-8">
-          <input validar type="text" id="numDocumento" name="numeroDocumento" placeholder="Número documento"
+          <input validar type="text" id="numDocumentoRegistro" name="numeroDocumento" placeholder="Número documento"
             class="form-control" formControlName="numeroIdentificacion">
         </div>
       </div>
@@ -327,7 +328,7 @@
             <label>Nombre:</label>
           </div>
           <div class="col-sm-8">
-            <input validar type="text" id="aplicadas" name="aplicadas" 
+            <input validar type="text" id="nombreusuarioRegistro" name="aplicadas" 
               class="form-control" formControlName="nombre">
           </div>
       </div>
@@ -336,7 +337,7 @@
             <label>Fecha Nacimiento:</label>
           </div>
           <div class="col-sm-8">
-            <input validar type="date" id="aplicadas" name="aplicadas" 
+            <input validar type="date" id="fechanac" name="aplicadas" 
               class="form-control" formControlName="fechaNacimiento">
           </div>
       </div>
@@ -347,14 +348,15 @@
           </div>
           <div class="col-sm-8">
             
-            <input validar type="text" id="aplicadas" name="aplicadas" 
+            <input validar type="text" id="tipoSangre" name="aplicadas" 
               class="form-control" formControlName="tipoSangre">
           </div>
       </div>
     
       <div class="row">
         <div class="col-sm-2">
-            <button class="btn btn-primary" [disabled]="!registrarUsuarioForm.valid">Guardar</button>
+            <button class="btn btn-primary" id="btnRegistrarUsuarioGuardar"
+             [disabled]="!registrarUsuarioForm.valid">Guardar</button>
         </div>
       </div>
     </form>

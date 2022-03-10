@@ -5,27 +5,67 @@ import { VacunasPage } from '../page/vacunas/vacuna.po';
 describe('workspace-project Producto', () => {
     let page: AppPage;
     let navBar: NavbarPage;
-    let producto: VacunasPage;
+    let vacuna: VacunasPage;
 
     beforeEach(() => {
         page = new AppPage();
         navBar = new NavbarPage();
-        producto = new VacunasPage();
+        vacuna = new VacunasPage();
     });
 
-    it('Deberia crear vacuna', () => {
-      
-
+    it('Deberia buscar vacunas pendientes', () => {
+        const TIPO_DOC = 'CC';
+        const DOCUMENTO = '12345';
+        const PENDIENTE = 'S';
         page.navigateTo();
-        navBar.clickBotonProductos();
+        navBar.clickBotonVacunas();
+
+        vacuna.ingresarTipoDoc(TIPO_DOC);
+        vacuna.ingresarDocumento(DOCUMENTO);
+        vacuna.ingresarPendientes(PENDIENTE);
       
     });
 
-   /* it('Deberia listar productos', () => {
-        page.navigateTo();
-        navBar.clickBotonProductos();
-        producto.clickBotonListarProductos();
+    it('Deberia crear usuario',( )=> {
+        const TIPO_DOC = 'CC';
+        const DOCUMENTO = '12345';
+        const TIPO_SANGRE = 'O+';
+        const FECHA_NACIMIENTO = '13-05-1991';
+        const NOMBRE = 'Lucy Araujo';
+         
+        vacuna.clickbtnRegistrarUsuario();
 
-        expect(4).toBe(producto.contarProductos());
-    });*/
+        vacuna.ingresarinputnumDocumentoRegistro(TIPO_DOC);
+        vacuna.ingresarinputnumDocumentoRegistro(DOCUMENTO);
+        vacuna.ingresarinputtipoSangre(TIPO_SANGRE);
+        vacuna.ingresarinputfechanac(FECHA_NACIMIENTO);
+        vacuna.ingresarinputnombreusuarioRegistro(NOMBRE);
+
+        vacuna.clickbtnRegistrarUsuarioGuardar();
+
+    });
+
+    
+    it('Deberia crear vacunas', () => {
+        const NOMBRE = 'tetano';
+        const DOSIS = 1;
+        const TIEMPO_DOSIS = 1;
+        const ESTADO = 'pendiente';
+        const VALOR = 1000;
+        const SUBSIDIADA= 'S';
+        const DOSIS_PENDIENTES= 'S';
+
+        page.navigateTo();
+        navBar.clickBotonVacunas;
+        vacuna.ingresarinputValorVacunas(VALOR);
+        vacuna.ingresarinputdosisPendientes(DOSIS_PENDIENTES);
+        vacuna.ingresarinputNombreVacuna(NOMBRE);
+        vacuna.ingresarinputTiempoDosis(TIEMPO_DOSIS);
+        vacuna.ingresarinputSubsidiada(SUBSIDIADA);
+        vacuna.ingresarinputTiempoDosis(DOSIS);
+        vacuna.ingresarinputestadoVacuna(ESTADO);
+
+        vacuna.clickbtnGuardarVacuna();
+        //expect(4).toBe(vacuna.contarProductos());
+    });
 });

@@ -19,6 +19,7 @@ const MENSAJE_VACUNAS = 'La próxima fecha de vacunas es: ';
 const MENSAJE_VACUNAS_B = ' y el valor a pagar es de: $';
 const CEDULA='CC';
 
+
 @Component({
   selector: 'app-vacunar',
   templateUrl: './vacunar.component.html',
@@ -31,6 +32,7 @@ export class VacunarComponent implements OnInit {
   registrarUsuarioForm: FormGroup;
   vacunaActualizarForm :FormGroup;
   mensaje = "";
+  resultadoBusqueda = '';//El usuario no tiene vacunas registradas
   modalRef: BsModalRef;
   tipoDoc: string = "";
   documento: string = "";
@@ -41,7 +43,7 @@ export class VacunarComponent implements OnInit {
   public vacunasPendientes:  VacunasPendientes;
   public guardaVacuna: Observable<Respuesta>;
   
-  mostrarLista : boolean = true;
+  mostrarLista : boolean = false;
   headElements = ['ID', 'Nombre', 'Estado', 'Fecha Aplicación', 'Dosis aplicada','Tiempo entre dosis', 'Valor', 'Subsidiada', ' '];
 
   constructor(public modalService: BsModalService,
@@ -91,7 +93,6 @@ export class VacunarComponent implements OnInit {
   }
 
   registrarvacuna(template: TemplateRef<any>){
-    console.log('Usuario:' + this.idUsuario);
     this.construirFormularioVacuna();
     this.modalRef = this.modalService.show(template);
   }
